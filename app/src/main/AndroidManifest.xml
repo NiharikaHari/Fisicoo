@@ -5,6 +5,8 @@
 
     <dist:module dist:instant="true" />
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <supports-screens>
         android:resizeable="true"
         android:smallScreens="true"
@@ -21,6 +23,10 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".StepCounterActivity"></activity>
+        <activity android:name=".SleepActivity" />
+        <activity android:name=".DietPlanner" />
+        <activity android:name=".HeartrateActivity" />
         <activity android:name=".HomeActivity" />
         <activity
             android:name=".ui.login.SplashActivity"

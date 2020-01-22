@@ -38,6 +38,12 @@ public class LoginActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        //Firebase
+        Toast.makeText(LoginActivity.this, "Firebase connection success", Toast.LENGTH_LONG).show();
+
+
+        //Login
         loginViewModel = ViewModelProviders.of(this, new LoginViewModelFactory())
                 .get(LoginViewModel.class);
 

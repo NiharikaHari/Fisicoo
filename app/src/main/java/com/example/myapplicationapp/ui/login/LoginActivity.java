@@ -40,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         //Firebase
-        Toast.makeText(LoginActivity.this, "Firebase connection success", Toast.LENGTH_LONG).show();
+        //Toast.makeText(LoginActivity.this, "Firebase connection success", Toast.LENGTH_LONG).show();
 
 
         //Login
@@ -129,13 +129,18 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    public void clickRegister(View view){
+        Intent intent = new Intent(this, RegisterActivity.class);
+        startActivity(intent);
+    }
+
     private void updateUiWithUser(LoggedInUserView model) {
-        String welcome = getString(R.string.welcome) + model.getDisplayName();
-        // TODO : initiate successful logged in experience
+        //String welcome = getString(R.string.welcome) + model.getDisplayName();
+
         Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);
 
-        Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
     }
 
     private void showLoginFailed(@StringRes Integer errorString) {

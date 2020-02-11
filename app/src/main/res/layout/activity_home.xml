@@ -52,6 +52,18 @@
         app:srcCompat="@drawable/dietlogo" />
 
     <ImageButton
+        android:id="@+id/imageButton4"
+        android:layout_width="166dp"
+        android:layout_height="166dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:onClick="clickBMI"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton3"
+        app:srcCompat="@drawable/bmilogo" />
+
+    <ImageButton
         android:id="@+id/imageButton"
         android:layout_width="166dp"
         android:layout_height="166dp"

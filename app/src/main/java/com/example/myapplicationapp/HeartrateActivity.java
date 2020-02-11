@@ -21,6 +21,17 @@ import java.util.Calendar;
 import java.util.Timer;
 import java.util.TimerTask;
 
+//Graph imports
+import java.util.Random;
+import android.app.Activity;
+
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.GridLabelRenderer;
+import com.jjoe64.graphview.Viewport;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
+
+
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -46,13 +57,40 @@ public class HeartrateActivity extends AppCompatActivity {
 
     Calendar c;
 
+    // Global variables for graph
+    private static final Random RANDOM = new Random();
+    private LineGraphSeries<DataPoint> series;
+    private int lastX = 0;
+    double v1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_heartrate);
 
+
+        //Plotting graph
+        // we get graph view instance
+        GraphView graph = (GraphView) findViewById(R.id.graph);
+        // data
+        series = new LineGraphSeries<>();
+        graph.addSeries(series);
+        // customize a little bit viewport
+        Viewport viewport = graph.getViewport();
+        viewport.setYAxisBoundsManual(true);
+        viewport.setMinY(0);
+        viewport.setMaxY(200);
+        viewport.setXAxisBoundsManual(true);
+        viewport.setMinX(0);
+        viewport.setMaxX(20);
+        viewport.setScrollable(false);
+        //graph.getGridLabelRenderer().setGridStyle(GridLabelRenderer.GridStyle.NONE);
+        //graph.getViewport().setDrawBorder(true);
+
+        //Reading pulse
         t1 = findViewById(R.id.textView2);
+        //t2 = findViewById(R.id.textView1);
+
 
         //Setting time interval for reading pulse rate
 
@@ -108,7 +146,7 @@ public class HeartrateActivity extends AppCompatActivity {
             }
             try {
                 JSONObject channel = (JSONObject) new JSONTokener(response).nextValue();
-                double v1 = channel.getDouble(THINGSPEAK_FIELD1);
+                v1 = channel.getDouble(THINGSPEAK_FIELD1);
                 try
                 {
                     t1.setText(""+v1+" bpm");
@@ -126,4 +164,45 @@ public class HeartrateActivity extends AppCompatActivity {
             }
         }
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // we're going to simulate real time with thread that append data to the graph
+        new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                // we add 100 new entries
+                for (int i = 0; i < 100; i++) {
+                    runOnUiThread(new Runnable() {
+
+                        @Override
+                        public void run() {
+                            addEntry();
+                        }
+                    });
+
+                    // sleep to slow down the add of entries
+                    try {
+                        Thread.sleep(500);
+                    } catch (InterruptedException e) {
+                        // manage error ...
+                    }
+                }
+            }
+        }).start();
+    }
+
+    // add random data to graph
+    private void addEntry() {
+        // here, we choose to display max 10 points on the viewport and we scroll to end
+
+        //t2.setText(""+v1);
+        series.appendData(new DataPoint(lastX++,  v1), true, 20);
+        series.setDrawBackground(true);
+        series.setAnimated(true);
+        series.setDrawDataPoints(true);
+    }
+
 }

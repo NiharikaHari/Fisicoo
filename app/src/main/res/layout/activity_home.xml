@@ -15,8 +15,7 @@
         android:layout_width="166dp"
         android:layout_height="166dp"
         android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="80dp"
         android:fadingEdge="none"
         android:fitsSystemWindows="false"
         android:onClick="clickHeartrate"
@@ -29,9 +28,8 @@
         android:id="@+id/imageButton2"
         android:layout_width="166dp"
         android:layout_height="166dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="80dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
         android:onClick="clickSleep"
         android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
@@ -75,6 +73,27 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageButton2"
         app:srcCompat="@drawable/stepcounterlogo" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:background="@color/toolbar"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imageButton6"
+        android:layout_width="57dp"
+        android:layout_height="54dp"
+        android:background="@color/toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/settingsicon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

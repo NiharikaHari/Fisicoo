@@ -49,12 +49,16 @@ public class RegisterActivity extends AppCompatActivity {
         height = findViewById(R.id.height);
         weight  = findViewById(R.id.weight);
 
-
         email = username.getText().toString();
         name1 = name.getText().toString();
         ht = Float.parseFloat(height.getText().toString());
         wt = Float.parseFloat(weight.getText().toString());
-        
+
+        SaveSharedPreference.setEmailID(RegisterActivity.this, email);
+        SaveSharedPreference.setName(RegisterActivity.this, name1);
+        SaveSharedPreference.setHeight(RegisterActivity.this, ht);
+        SaveSharedPreference.setWeight(RegisterActivity.this, wt);
+
         user = new LoggedInUser(email, name1, ht, wt);
 
         Intent intent = new Intent(this, HomeActivity.class);

@@ -59,7 +59,7 @@ public class StepCounterActivity extends AppCompatActivity implements SensorEven
         stepCounter = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
         sensorManager.registerListener(StepCounterActivity.this, stepCounter, SensorManager.SENSOR_DELAY_NORMAL);
 
-        final long period = 1000;
+        final long period = 10000;
         new Timer().schedule(new TimerTask() {
 
             @Override

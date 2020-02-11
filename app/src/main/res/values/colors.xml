@@ -5,6 +5,8 @@
     <color name="colorAccent">#D23D73</color>
     <color name="background">#3B3275</color>
 
+    <color name="toolbar">#090C38</color>
+
 
 
 </resources>

@@ -23,7 +23,7 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".BMICalculatorActivity"></activity>
+        <activity android:name=".BMICalculatorActivity" />
         <activity android:name=".StepCounterActivity" />
         <activity android:name=".SleepActivity" />
         <activity android:name=".DietPlanner" />

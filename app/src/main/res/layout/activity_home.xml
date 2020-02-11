@@ -91,6 +91,7 @@
         android:layout_width="57dp"
         android:layout_height="54dp"
         android:background="@color/toolbar"
+        android:onClick="clickSettings"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/settingsicon" />

@@ -24,7 +24,7 @@ public class SaveSharedPreference
         editor.commit();
     }
 
-    public static String getUserName(Context ctx)
+    public static String getEmailID(Context ctx)
     {
         return getSharedPreferences(ctx).getString(PREF_EMAILID, "");
     }

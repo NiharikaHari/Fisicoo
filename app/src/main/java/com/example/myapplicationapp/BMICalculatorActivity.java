@@ -10,6 +10,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.myapplicationapp.data.model.LoggedInUser;
+import com.example.myapplicationapp.ui.login.SaveSharedPreference;
 
 public class BMICalculatorActivity extends AppCompatActivity {
 
@@ -22,6 +23,9 @@ public class BMICalculatorActivity extends AppCompatActivity {
     LoggedInUser userVars;
 
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,11 +33,13 @@ public class BMICalculatorActivity extends AppCompatActivity {
 
         userVars = LoggedInUser.getInstance();
         Log.d(TAG, "-----------------------user ia"+userVars);
-        float BMI = userVars.getBMI();
+        //float BMI = userVars.getBMI();
+        SaveSharedPreference.setBMI(BMICalculatorActivity.this);
+        float BMI = SaveSharedPreference.getBMI(BMICalculatorActivity.this);
+        Log.d(TAG, "------------------BMI is"+BMI);
 
         t1 = findViewById(R.id.textView5);
         t1.setText(""+BMI);
-        Log.d(TAG, "----------------------------------BMI is" + BMI);
 
         level = findViewById(R.id.progressBar);
         level.setProgress((int)BMI*2);

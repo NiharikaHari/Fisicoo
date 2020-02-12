@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -16,6 +17,8 @@ import com.example.myapplicationapp.data.model.LoggedInUser;
 public class RegisterActivity extends AppCompatActivity {
 
     //declaring instance of firebase auth
+
+    private static final String TAG = "Register user";
 
 
     LoggedInUser user;
@@ -58,6 +61,8 @@ public class RegisterActivity extends AppCompatActivity {
         SaveSharedPreference.setName(RegisterActivity.this, name1);
         SaveSharedPreference.setHeight(RegisterActivity.this, ht);
         SaveSharedPreference.setWeight(RegisterActivity.this, wt);
+
+        Log.d(TAG, "---------------Set values for mail, name, ht, wt");
 
         user = new LoggedInUser(email, name1, ht, wt);
 
